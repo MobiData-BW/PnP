@@ -1,0 +1,235 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/MobiData-BW/PnP",
+    "type": "array",
+    "title": "The root schema for bikesharingStations.json",
+    "description": "The root schema comprises the GeoJSON document for bikesharing stations on MobiData-BW Plug-n-play Interface.",
+    "default": {},
+	"additionalItems": true,
+    "items": {
+        "$id": "#/items",
+        "anyOf": [
+            {
+                "$id": "#/items/anyOf/0",
+                "type": "object",
+                "title": "The first anyOf schema",
+                "description": "Array of station objects",
+                "default": {},
+				"required": [
+					"operatorId",
+					"trafficType",
+					"location",
+					"timestamp"
+				],
+				"properties": {
+					"operatorId": {
+						"$id": "#/properties/operatorId",
+						"type": "string",
+						"title": "The operatorId schema",
+						"description": "The unique identifier for an operator.",
+						"default": "",
+						"examples": [
+							"NVBW"
+						]
+					},
+					"id": {
+						"$id": "#/properties/id",
+						"type": "string",
+						"title": "The id schema",
+						"description": "The unique identifier for object at the station.",
+						"default": "",
+						"examples": [
+							"MOB_01@NVBW"
+						]
+					},
+					"uri": {
+						"$id": "#/properties/uri",
+						"type": "string",
+						"title": "The uri schema",
+						"description": "URI of object at the station.",
+						"default": "",
+						"examples": [
+							"/nvbw/bikesharing/stations/MOB_01@NVBW"
+						]
+					},
+					"dataType": {
+						"$id": "#/properties/dataType",
+						"type": "string",
+						"title": "The dataType schema",
+						"description": "Type of data collected at the station.",
+						"default": "bikeRental",
+						"examples": [
+							"bikeRental"
+						]
+					},
+					"trafficType": {
+						"$id": "#/properties/trafficType",
+						"type": "string",
+						"title": "The trafficType schema",
+						"description":  "Kind of object at the station.",
+						"default": "bike",
+						"examples": [
+							"bike"
+						]
+					},
+					"imageId": {
+						"$id": "#/properties/imageId",
+						"type": "string",
+						"title": "The imageId schema",
+						"description": "The unique identifier for an image of the object at the station.",
+						"default": "",
+						"examples": [
+							"400a6076ca3830fb79c53ad543173791"
+						]
+					},
+					"name": {
+						"$id": "#/properties/name",
+						"type": "string",
+						"title": "The name schema",
+						"description": "Official name of place or building.",
+						"default": "",
+						"examples": [
+							"Mobilstation NVBW"
+						]
+					},
+					"description": {
+						"$id": "#/properties/description",
+						"type": "string",
+						"title": "The description schema",
+						"description": "List of different kinds of options at the station.",
+						"default": "",
+						"examples": [
+							"Standort NVBW"
+						]
+					},
+					"location": {
+						"$id": "#/properties/location",
+						"type": "object",
+						"title": "The GeoJSON location schema",
+						"description": "Location in WGS84 (e.g. longitude and latitude).",
+						"default": {},
+						"examples": [
+							{
+								"type": "Point",
+								"coordinates": [
+									9.000000,
+									49.000000
+								]
+							}
+						],
+						"required": [
+							"type",
+							"coordinates"
+						],
+						"properties": {
+							"type": {
+								"$id": "#/properties/location/properties/type",
+								"type": "string",
+								"title": "The type schema",
+								"description": "Type of location for the GeoJSON.",
+								"default": "",
+								"examples": [
+									"Point"
+								]
+							},
+							"coordinates": {
+								"$id": "#/properties/location/properties/coordinates",
+								"type": "array",
+								"title": "The coordinates schema",
+								"description": "Coordinates of the location",
+								"default": [],
+								"examples": [
+									[
+										9.000000,
+										49.000000
+									]
+								],
+								"additionalItems": true,
+								"items": {
+									"$id": "#/properties/location/properties/coordinates/items",
+									"anyOf": [
+										{
+											"$id": "#/properties/location/properties/coordinates/items/anyOf/0",
+											"type": "number",
+											"title": "The first anyOf schema",
+											"description": "Array of coordinate items.",
+											"default": "",
+											"examples": [
+												9.000000,
+												49.000000
+											]
+										}
+									]
+								}
+							}
+						},
+						"additionalProperties": true
+					},
+					"address": {
+						"$id": "#/properties/address",
+						"type": "object",
+						"title": "The address schema",
+						"description": "Address of the station.",
+						"default": {},
+						"examples": [
+							{
+								"street": "Wilhelmsplatz",
+								"postalCode": "70178",
+								"city": "Stuttgart"
+							}
+						],
+						"required": [
+							"street",
+							"postalCode",
+							"city"
+						],
+						"properties": {
+							"street": {
+								"$id": "#/properties/address/properties/street",
+								"type": "string",
+								"title": "The street schema",
+								"description": "Street of the station location.",
+								"default": "",
+								"examples": [
+									"Wilhelmsplatz"
+								]
+							},
+							"postalCode": {
+								"$id": "#/properties/address/properties/postalCode",
+								"type": "string",
+								"title": "The postalCode schema",
+								"description": "Postal code of the station location.",
+								"default": "",
+								"examples": [
+									"70178"
+								]
+							},
+							"city": {
+								"$id": "#/properties/address/properties/city",
+								"type": "string",
+								"title": "The city schema",
+								"description": "City of the station location.",
+								"default": "",
+								"examples": [
+									"Stuttgart"
+								]
+							}
+						},
+						"additionalProperties": true
+					},
+					"timestamp": {
+						"$id": "#/properties/timestamp",
+						"type": "string",
+						"title": "The timestamp schema",
+						"description": "Timestamp when the data was retrieved (yyyy-mm-ddThh:mm:ss+01:00)",
+						"default": "",
+						"examples": [
+							"2021-01-11T16:29:00+01:00"
+						]
+					}
+				},
+				"additionalProperties": true
+			}
+		]
+	}
+}

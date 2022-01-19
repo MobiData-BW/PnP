@@ -1,0 +1,249 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/MobiData-BW/",
+    "type": "array",
+    "title": "The root schema for parkingCars.json",
+    "description": "The root schema comprises the GeoJSON document for locations on MobiData-BW Plug-n-play Interface, where cars are parked.",
+    "default": {},
+	"additionalItems": true,
+    "items": {
+        "$id": "#/items",
+        "anyOf": [
+            {
+                "$id": "#/items/anyOf/0",
+                "type": "object",
+                "title": "The first anyOf schema",
+                "description": "Array of location objects",
+                "default": {},
+				"required": [
+					"operatorId",
+					"type",
+					"location",
+					"timestamp"
+				],
+				"properties": {
+					"operatorId": {
+						"$id": "#/properties/operatorId",
+						"type": "string",
+						"title": "The operatorId schema",
+						"description": "The unique identifier for an operator.",
+						"default": "",
+						"examples": [
+							"PR"
+						]
+					},
+					"type": {
+						"$id": "#/properties/type",
+						"type": "string",
+						"title": "The type schema",
+						"description": "Kind of function of object at the location.",
+						"default": "",
+						"examples": [
+							"parkandride"
+						]
+					},
+					"properties": {
+						"$id": "#/properties/properties",
+						"type": "array",
+						"title": "The properties schema",
+						"description": "List of properties of object at the location.",
+						"default": [],
+						"examples": [
+							[
+								"parkandride"
+							]
+						],
+						"additionalItems": true,
+						"items": {
+							"$id": "#/properties/properties/items",
+							"anyOf": [
+								{
+									"$id": "#/properties/properties/items/anyOf/0",
+									"type": "string",
+									"title": "The first anyOf schema",
+									"description": "The minimum item for the properties is 1.",
+									"default": "",
+									"examples": [
+										"parkandride"
+									]
+								}
+							]
+						}
+					},
+					"id": {
+						"$id": "#/properties/id",
+						"type": "string",
+						"title": "The id schema",
+						"description": "The unique identifier for the object at the location.",
+						"default": "",
+						"examples": [
+							"P_CAR_1@PR"
+						]
+					},
+					"uri": {
+						"$id": "#/properties/uri",
+						"type": "string",
+						"title": "The uri schema",
+						"description": "URI of object at the location.",
+						"default": "",
+						"examples": [
+							"/nvbw/parking/cars/P_CAR_1@PR"
+						]
+					},
+					"dataType": {
+						"$id": "#/properties/dataType",
+						"type": "string",
+						"title": "The dataType schema",
+						"description": "Type of data collected at the location.",
+						"default": "parkingCar",
+						"examples": [
+							"parkingCar"
+						]
+					},
+					"trafficType": {
+						"$id": "#/properties/trafficType",
+						"type": "string",
+						"title": "The trafficType schema",
+						"description":  "Kind of object at the location.",
+						"default": "car",
+						"examples": [
+							"car"
+						]
+					},
+					"imageId": {
+						"$id": "#/properties/imageId",
+						"type": "string",
+						"title": "The imageId schema",
+						"description": "The unique identifier for an image of the object at the location.",
+						"default": "",
+						"examples": [
+							"400a6076ca3830fb79c53ad543173791"
+						]
+					},
+					"name": {
+						"$id": "#/properties/name",
+						"type": "string",
+						"title": "The name schema",
+						"description": "Official name of place or building.",
+						"default": "",
+						"examples": [
+							"A3 AS Stuttgart."
+						]
+					},
+					"description": {
+						"$id": "#/properties/description",
+						"type": "string",
+						"title": "The description schema",
+						"description": "List of different kinds of options at the location.",
+						"default": "",
+						"examples": [
+							"50 Stellplätze, 10 Behindertenparkplätze."
+						]
+					},
+					"location": {
+						"$id": "#/properties/location",
+						"type": "object",
+						"title": "The GeoJSON location schema",
+						"description": "Location in WGS84 (e.g. longitude and latitude).",
+						"default": {},
+						"examples": [
+							{
+								"type": "Point",
+								"coordinates": [
+									9.000000,
+									49.000000
+								]
+							}
+						],
+						"required": [
+							"type",
+							"coordinates"
+						],
+						"properties": {
+							"type": {
+								"$id": "#/properties/location/properties/type",
+								"type": "string",
+								"title": "The type schema",
+								"description": "Type of location for the GeoJSON.",
+								"default": "",
+								"examples": [
+									"Point"
+								]
+							},
+							"coordinates": {
+								"$id": "#/properties/location/properties/coordinates",
+								"type": "array",
+								"title": "The coordinates schema",
+								"description": "Coordinates of the location",
+								"default": [],
+								"examples": [
+									[
+										9.000000,
+										49.000000
+									]
+								],
+								"additionalItems": true,
+								"items": {
+									"$id": "#/properties/location/properties/coordinates/items",
+									"anyOf": [
+										{
+											"$id": "#/properties/location/properties/coordinates/items/anyOf/0",
+											"type": "number",
+											"title": "The first anyOf schema",
+											"description": "Array of coordinate items.",
+											"default": 0.0,
+											"examples": [
+												9.000000,
+												49.000000
+											]
+										}
+									]
+								}
+							}
+						},
+						"additionalProperties": true
+					},
+					"address": {
+						"$id": "#/properties/address",
+						"type": "object",
+						"title": "The address schema",
+						"description": "Address of the station.",
+						"default": {},
+						"examples": [
+							{
+								"city": "Stuttgart"
+							}
+						],
+						"required": [
+							"city"
+						],
+						"properties": {
+							"city": {
+								"$id": "#/properties/address/properties/city",
+								"type": "string",
+								"title": "The city schema",
+								"description": "City of the location.",
+								"default": "",
+								"examples": [
+									"Stuttgart"
+								]
+							}
+						},
+						"additionalProperties": true
+					},
+					"timestamp": {
+						"$id": "#/properties/timestamp",
+						"type": "string",
+						"title": "The timestamp schema",
+						"description": "Timestamp when the data was retrieved (yyyy-mm-ddThh:mm:ss+01:00)",
+						"default": "",
+						"examples": [
+							"2021-01-11T16:29:00+01:00"
+						]
+					}
+				},
+				"additionalProperties": true
+			}
+		]
+	}
+}
